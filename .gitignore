@@ -1,0 +1,10 @@
+.ipynb_checkpoints/
+emails_by_address/
+.DS_Store
+enron61702insiderpay.pdf
+*.pyc
+poi_email_addresses.py
+final_project_dataset.pkl
+final_project_dataset_modified.pkl
+poi_email_addressess.py
+poi_names.txt
