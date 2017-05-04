@@ -11895,16 +11895,18 @@ long_term_incentive        10.222905
 <p>Any machine learning must perform both steps to achieve any kind of learning.</p>
 <h4 id="What-is-validation,-and-what&#8217;s-a-classic-mistake-you-can-make-if-you-do-it-wrong?-How-did-you-validate-your-analysis?--[relevant-rubric-item:-&#8220;validation-strategy&#8221;]">What is validation, and what&#8217;s a classic mistake you can make if you do it wrong? How did you validate your analysis?  [relevant rubric item: &#8220;validation strategy&#8221;]<a class="anchor-link" href="#What-is-validation,-and-what&#8217;s-a-classic-mistake-you-can-make-if-you-do-it-wrong?-How-did-you-validate-your-analysis?--[relevant-rubric-item:-&#8220;validation-strategy&#8221;]">&#182;</a></h4><p>A good machine learning algorithm must generalise. Meaning it must performance equally well on data that it haven't seen before. Validation is the step of testing the algorithm on an unseen dataset to ensure it generalises. The classic mistake is to train and validate an overfitted model based on the same set of data.</p>
 <p>Following common practise, I will split the data into two set, training and validation. The training data set is used in conjunction with cross-validation to find the best parameter and hyperparameter. Once the model is training and tuned, then it is validated using the validation dataset. I compare the performance of the model using the two different datasets to assess how well the model generalise.</p>
-<h4 id="Give-at-least-two-evaluation-metrics-and-your-average-performance-for-each-of-them.--Explain-an-interpretation-of-your-metrics-that-says-something-human-understandable-about-your-algorithm&#8217;s-performance.-[relevant-rubric-item:-&#8220;usage-of-evaluation-metrics&#8221;]">Give at least two evaluation metrics and your average performance for each of them.  Explain an interpretation of your metrics that says something human-understandable about your algorithm&#8217;s performance. [relevant rubric item: &#8220;usage of evaluation metrics&#8221;]<a class="anchor-link" href="#Give-at-least-two-evaluation-metrics-and-your-average-performance-for-each-of-them.--Explain-an-interpretation-of-your-metrics-that-says-something-human-understandable-about-your-algorithm&#8217;s-performance.-[relevant-rubric-item:-&#8220;usage-of-evaluation-metrics&#8221;]">&#182;</a></h4><p>The following is the performance metrics of my final random forest algorithm on the validation dataset.
-                 precision    recall  f1-score   support</p>
+<h4 id="Give-at-least-two-evaluation-metrics-and-your-average-performance-for-each-of-them.--Explain-an-interpretation-of-your-metrics-that-says-something-human-understandable-about-your-algorithm&#8217;s-performance.-[relevant-rubric-item:-&#8220;usage-of-evaluation-metrics&#8221;]">Give at least two evaluation metrics and your average performance for each of them.  Explain an interpretation of your metrics that says something human-understandable about your algorithm&#8217;s performance. [relevant rubric item: &#8220;usage of evaluation metrics&#8221;]<a class="anchor-link" href="#Give-at-least-two-evaluation-metrics-and-your-average-performance-for-each-of-them.--Explain-an-interpretation-of-your-metrics-that-says-something-human-understandable-about-your-algorithm&#8217;s-performance.-[relevant-rubric-item:-&#8220;usage-of-evaluation-metrics&#8221;]">&#182;</a></h4><p>The following is the performance metrics of my final random forest algorithm on the validation dataset.</p>
 
-<pre><code>      False      1.000     0.795     0.886        39
+<pre><code>             precision    recall  f1-score   support
+
+      False      1.000     0.795     0.886        39
        True      0.385     1.000     0.556         5
 
 avg / total      0.930     0.818     0.848        44
 
 </code></pre>
-<p>The recall on positive label is 1.0, meaning all the classifier identified all of the positive labels in the validation set. The precision of 0.385 on positive means the among all of the predicted positive, around 38.5% of them are correct (true postive). So by combining the two, when the classifier predicts someone to be POI, we can say we are 38.5% confident he/she is a POI.</p>
+<p>The recall on positive label is 1.0, meaning all the classifier identified all of the positive labels in the validation set. (correctly identified all of the POI in the test dataset)</p>
+<p>The precision of 0.385 on positive means the among all of the predicted positive, around 38.5% of them are correct (true postive). So by combining the two, when the classifier predicts someone to be POI, we can say we are 38.5% confident he/she is a POI.</p>
 
 </div>
 </div>
@@ -12785,7 +12787,7 @@ test set: (44, 9)
 <li>The first step is about forming hypothesis about concept class, a family of possible models. The different algoirthm corresponding to different concpet class and hence model selection is about find the best concept class. </li>
 <li>Given any concept class, we also need to find the best concept with the class, that is the role of parameter tuning.</li>
 </ul>
-<p>Any machine learning must performan both steps to achieve any sort of learning.</p>
+<p>Any machine learning must performan both steps to achieve any sort of learning. Failed at doing any of two, one will left with a bad model that doesn't generalise.</p>
 
 </div>
 </div>
@@ -12824,14 +12826,6 @@ test set: (44, 9)
 <div class="output_wrapper">
 <div class="output">
 
-
-<div class="output_area"><div class="prompt"></div>
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/Users/tianchuanting/anaconda/lib/python2.7/site-packages/sklearn/metrics/classification.py:1113: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 due to no predicted samples.
-  &#39;precision&#39;, &#39;predicted&#39;, average, warn_for)
-</pre>
-</div>
-</div>
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
@@ -12914,7 +12908,7 @@ avg / total      0.878     0.869     0.873       145
         <span class="s1">&#39;min_impurity_split&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
         <span class="s1">&#39;class_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">2</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">4</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">8</span> <span class="p">}]</span>
     <span class="p">},</span>
-    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;f1&#39;</span><span class="p">,</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;f1&#39;</span>
 <span class="p">)</span>
     
 <span class="n">report</span><span class="p">(</span><span class="n">random_forest</span><span class="p">)</span>
@@ -12927,6 +12921,14 @@ avg / total      0.878     0.869     0.873       145
 <div class="output_wrapper">
 <div class="output">
 
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/tianchuanting/anaconda/lib/python2.7/site-packages/sklearn/metrics/classification.py:1113: UndefinedMetricWarning: F-score is ill-defined and being set to 0.0 due to no predicted samples.
+  &#39;precision&#39;, &#39;predicted&#39;, average, warn_for)
+</pre>
+</div>
+</div>
 
 <div class="output_area"><div class="prompt"></div>
 <div class="output_subarea output_stream output_stdout output_text">
@@ -13511,13 +13513,130 @@ avg / total      0.910     0.669     0.725       145
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Export-Result-for-Project-Submission">Export Result for Project Submission<a class="anchor-link" href="#Export-Result-for-Project-Submission">&#182;</a></h1>
+<h1 id="Performance-without-engineered-feautres">Performance without engineered feautres<a class="anchor-link" href="#Performance-without-engineered-feautres">&#182;</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
 <div class="prompt input_prompt">In&nbsp;[21]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">_random_forest</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span>
+    <span class="n">estimator</span><span class="o">=</span><span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">n_estimators</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>            
+    <span class="n">param_grid</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;max_depth&#39;</span><span class="p">:</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+        <span class="s1">&#39;min_impurity_split&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">],</span>
+        <span class="s1">&#39;class_weight&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;balanced&#39;</span><span class="p">,</span> <span class="p">{</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">2</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">4</span> <span class="p">},</span> <span class="p">{</span> <span class="mi">0</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">8</span> <span class="p">}]</span>
+    <span class="p">},</span>
+    <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;f1&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">X_train</span> <span class="o">=</span> <span class="n">X_train</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;short_term_incomes&#39;</span><span class="p">,</span> <span class="s1">&#39;pct_msg_with_poi&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+<span class="n">X_test</span> <span class="o">=</span> <span class="n">X_test</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;short_term_incomes&#39;</span><span class="p">,</span> <span class="s1">&#39;pct_msg_with_poi&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;short_term_incomes&#39;</span><span class="p">,</span> <span class="s1">&#39;pct_msg_with_poi&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="s1">&#39;columns&#39;</span><span class="p">)</span>
+
+<span class="n">_random_forest</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">best</span> <span class="o">=</span> <span class="n">_random_forest</span><span class="o">.</span><span class="n">best_estimator_</span>
+
+<span class="k">print</span> <span class="s1">&#39;Best estimator:&#39;</span>
+<span class="k">print</span> <span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="k">print</span> <span class="n">best</span>
+
+<span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">Performance on Training Set:&#39;</span>
+<span class="k">print</span> <span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="k">print</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">digits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">y_true</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span>
+
+<span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">Performance on Validation Set:&#39;</span>
+<span class="k">print</span> <span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="k">print</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">digits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">y_true</span><span class="o">=</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">))</span>
+
+<span class="k">print</span> <span class="s1">&#39;</span><span class="se">\n\n</span><span class="s1">Performance on Entire DataSet:&#39;</span>
+<span class="k">print</span> <span class="s1">&#39;-&#39;</span> <span class="o">*</span> <span class="mi">60</span>
+<span class="k">print</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">digits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">y_true</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="o">=</span><span class="n">best</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+
+<div class="output_area"><div class="prompt"></div>
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Best estimator:
+------------------------------------------------------------
+RandomForestClassifier(bootstrap=True, class_weight={0: 1, 1: 8},
+            criterion=&#39;gini&#39;, max_depth=2, max_features=&#39;auto&#39;,
+            max_leaf_nodes=None, min_impurity_split=0.3,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=10, n_jobs=1,
+            oob_score=False, random_state=0, verbose=0, warm_start=False)
+
+
+Performance on Training Set:
+------------------------------------------------------------
+             precision    recall  f1-score   support
+
+      False      0.963     0.875     0.917        88
+       True      0.476     0.769     0.588        13
+
+avg / total      0.900     0.861     0.874       101
+
+
+
+Performance on Validation Set:
+------------------------------------------------------------
+             precision    recall  f1-score   support
+
+      False      0.895     0.872     0.883        39
+       True      0.167     0.200     0.182         5
+
+avg / total      0.812     0.795     0.803        44
+
+
+
+Performance on Entire DataSet:
+------------------------------------------------------------
+             precision    recall  f1-score   support
+
+      False      0.941     0.874     0.906       127
+       True      0.407     0.611     0.489        18
+
+avg / total      0.874     0.841     0.854       145
+
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>After removing the engineered feature. the performance of our estimator decreased dramatically. The recall decreased from 100% to 20%.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Export-Result-for-Project-Submission">Export Result for Project Submission<a class="anchor-link" href="#Export-Result-for-Project-Submission">&#182;</a></h1>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[22]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;./my_classifier.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
@@ -13537,7 +13656,7 @@ avg / total      0.910     0.669     0.725       145
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[22]:</div>
+<div class="prompt input_prompt">In&nbsp;[23]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="o">%</span><span class="k">run</span> tester.py
